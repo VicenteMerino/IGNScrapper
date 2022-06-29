@@ -5,23 +5,15 @@
   "repository": "git@github.com:VicenteMerino/IGNScrapper.git",
   "author": "vamerino@uc.cl",
   "license": "MIT",
-  "scripts": {
-    "dev": "ts-node src/index.ts",
-    "build": "tsc",
-    "start": "node src/index.ts"
+  "devDependencies": {
+    "chrome-aws-lambda": "10.1.0",
+    "puppeteer": "10.1.0"
   },
   "dependencies": {
-    "@types/aws-sdk": "^2.7.0",
-    "@types/dotenv": "^8.2.0",
-    "@types/node": "^18.0.0",
-    "aws-sdk": "^2.1163.0",
-    "chrome-aws-lambda": "^10.1.0",
+    "aws-sdk": "^2.1164.0",
     "dotenv": "^16.0.1",
-    "puppeteer-core": "10.1.0",
-    "typescript": "^4.7.4"
-  },
-  "devDependencies": {
-    "puppeteer": "10.1.0",
-    "ts-node": "^10.8.1"
+    "dynamodb-toolbox": "^0.3.5",
+    "moment": "^2.29.3",
+    "uuid": "^8.3.2"
   }
 }
