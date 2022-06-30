@@ -1,7 +1,7 @@
 {
   "name": "IGNScrapper",
   "version": "1.0.0",
-  "main": "src/index.ts",
+  "main": "index.js",
   "repository": "git@github.com:VicenteMerino/IGNScrapper.git",
   "author": "vamerino@uc.cl",
   "license": "MIT",

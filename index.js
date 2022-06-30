@@ -24,26 +24,24 @@ const fetchArticles = async (event, context) => {
 
     await Promise.all([
       page.goto(articlesUrl),
-      page.waitForSelector("div.content-item", {
-        visible: true,
-        hidden: true,
-      }),
+      page.waitForSelector("div.content-item"),
+      page.waitForNavigation(),
     ]);
 
     const articles = await page.$$eval("div.content-item", (el) => {
       return el.map((e) => {
-        const itemBody = e.querySelector("a.item-body");
-        const itemTitle = e.querySelector("h3.item-title");
-        const itemSubtitle = e.querySelector("div.item-subtitle");
-        const image = itemBody.querySelector("img");
-        const dataTimeAgo = itemTitle?.getAttribute("data-timeago");
+        const articleLink = e.querySelector("a.item-body").href;
+        const title = e.querySelector("h3.item-title").innerText;
+        const subtitle = e.querySelector("div.item-subtitle").innerText?.split("-")?.[1]?.trim();
+        const imageSrc = e.querySelector("a.item-body img").src;
+        const publicationDate = e.querySelector("h3.item-title").getAttribute("data-timeago");
 
         return {
-          articleLink: itemBody?.href,
-          imageSrc: image?.src,
-          title: itemTitle?.innerText,
-          subtitle: itemSubtitle?.innerText?.split("-")?.[1]?.trim(),
-          publicationDate: dataTimeAgo,
+          articleLink,
+          imageSrc,
+          title,
+          subtitle,
+          publicationDate,
         };
       });
     });
